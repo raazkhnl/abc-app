@@ -1,0 +1,38 @@
+# Node modules
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Test and log files
+*.log
+*.test.js
+
+# dotenv environment variable files
+# .env
+# .env.local
+# .env.development.local
+# .env.test.local
+# .env.production.local
+
+# Mac system files
+.DS_Store
+
+# VS Code settings
+.vscode/
+
+# npm debug log
+npm-debug.log*
+
+# yarn error log
+yarn-error.log*
+
+# Next.js production build folder
+/.next/
+
+# Local development directories
+.idea/
+
+# Coverage directory used by testing tools
+coverage/
