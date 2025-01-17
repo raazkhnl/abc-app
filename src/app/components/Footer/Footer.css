@@ -1,0 +1,26 @@
+.text-no-decoration {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s; /* Add smooth transition */
+    padding: 0.2rem;
+  }
+  
+  .text-no-decoration:hover {
+    background-color: var(--white-color);;
+    color: var(--text-color);
+    border-radius: 0.3rem;
+    padding: 0.2rem;
+  }
+  
+  .text-no-decoration1 {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 0.2rem;
+  }
+  
+  .text-no-decoration1:hover {
+    background-color: var(--white-color);;
+    color: var(--text-color);
+    border-radius: 0.3rem;
+    padding: 0.2rem;
+  }
