@@ -1,4 +1,7 @@
 "use client"
+
+import Image from "next/image";
+
 const Footer = () => {
   return (
     <>
@@ -42,7 +45,7 @@ const Footer = () => {
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
                     <a
-                      href="#" 
+                      href="#"
                       className="hover:underline "
                     >
                       Github
@@ -50,7 +53,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a
-                      href="#" 
+                      href="#"
                       className="hover:underline"
                     >
                       Discord
@@ -81,7 +84,7 @@ const Footer = () => {
           <div className="sm:flex sm:items-center sm:justify-between">
             <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
               © 2025{" "}
-              <a href="#"  className="hover:underline">
+              <a href="#" className="hover:underline">
                 ABC™
               </a>
               . All Rights Reserved.

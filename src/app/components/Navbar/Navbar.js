@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 function Navbar() {
   const [activeItem, setActiveItem] = useState("/");

@@ -1,11 +1,12 @@
-import { lazy } from "react";
 import "../globals.css";
 import { Inter } from "next/font/google";
 import { ToastContainer } from "react-toastify";
+import Script from "next/script";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
+
 const inter = Inter({ subsets: ["latin"] });
-const Navbar = lazy(() => import("../components/Navbar/Navbar"));
-const Footer = lazy(() => import("../components/Footer/Footer"));
 
 export const metadata = {
   title: "ABC Educational Consultancy",
@@ -24,9 +25,14 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <ToastContainer position="top-right" autoClose={2000} />
         <Navbar />
-        {children}
+        <main>{children}</main>
         <Footer />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+        {/* Use next/script for asynchronous script loading */}
+        <Script
+          src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

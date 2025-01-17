@@ -1,36 +1,36 @@
 import mongoose from "mongoose";
 
 const TestPreparationSchema = new mongoose.Schema({
-    title:{
+    title: {
         type: String,
         required: [true, "Please provide a title"],
     },
 
-    subcategory:{
+    subcategory: {
         type: String,
-        required:[true, "Please provide a subcategory"],
+        required: [true, "Please provide a subcategory"],
 
     },
 
-    priorityOrder:{
-        type: number,
-        required:[true, "Please provide a priorityOrder"],
-    },
-
-    description : {
+    priorityOrder: {
         type: String,
-        required : [true, "Please provide a description"],
+        required: [true, "Please provide a priorityOrder"],
     },
 
-    image:{
+    description: {
+        type: String,
+        required: [true, "Please provide a description"],
+    },
+
+    image: {
         type: String,
     },
 
-    date:{
+    date: {
         type: Date,
         default: Date.now,
     }
-    
+
 })
 
 const TestPreparation = mongoose.models.TestPreparation || mongoose.model("TestPreparation", TestPreparationSchema);

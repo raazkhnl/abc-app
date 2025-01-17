@@ -1,11 +1,11 @@
 "use client"
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { toast, ToastContainer } from "react-toastify";
 
-function page() {
-  const [contacts, setContacts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [deletingId, setDeletingId] = useState(null);
+function Page() {
+  const [contacts, setContacts] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [deletingId, setDeletingId] = React.useState(null);
 
   // Fetch all contact submissions
   const fetchContacts = async () => {
@@ -25,7 +25,7 @@ function page() {
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchContacts();
   }, []);
 
@@ -125,4 +125,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
