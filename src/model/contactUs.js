@@ -8,7 +8,6 @@ const ContactUsSchema = new mongoose.Schema({
 
     phone : {
         type: String,
-        required : [true, "Please provide a phone number"],
     },
 
     email:{
@@ -16,9 +15,8 @@ const ContactUsSchema = new mongoose.Schema({
         required: [true, "Please provide a valid email"],
     },
 
-    destination:{
+    description:{
         type : String,
-        required: [true, "Please provide a destination"],
     },
 
     date:{

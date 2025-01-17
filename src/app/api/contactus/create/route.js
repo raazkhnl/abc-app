@@ -11,13 +11,13 @@ export async function POST(req) {
     const name = formData.get("name");
     const phone = formData.get("phone");
     const email = formData.get("email");
-    const destination = formData.get("destination");
+    const description = formData.get("description");
 
     const newContact = new ContactUs({
         name,
         phone,
         email,
-        destination,
+        description,
     });
 
     const savedContact = await newContact.save();

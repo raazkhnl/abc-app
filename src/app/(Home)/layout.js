@@ -1,7 +1,8 @@
 import { lazy } from "react";
 import "../globals.css";
 import { Inter } from "next/font/google";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const inter = Inter({ subsets: ["latin"] });
 const Navbar = lazy(() => import("../components/Navbar/Navbar"));
 const Footer = lazy(() => import("../components/Footer/Footer"));
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={inter.className}>
+        <ToastContainer position="top-right" autoClose={2000} />
         <Navbar />
         {children}
         <Footer />

@@ -1,30 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export function middleware(request) {
+  const token = request.cookies.get("token")?.value;
+  const { pathname } = request.nextUrl;
 
 
-export function middleware (request){
-    const path = request.nextUrl.pathname
-    
-    // const isPubllic = path === "/login" || path === "/signup"
-    
-    // const token = request.cookies.get("token")?.value || ""
-    
-    // if (isPubllic && token){
-    //     return NextResponse.redirect(new URL("/", request.nextUrl))
-    // }
+  if (token && pathname === "/login") {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
+  }
 
-    // if (!isPubllic && !token){
-    //     return NextResponse.redirect(new URL('/login', request.nextUrl))
-    // }
-} 
+  if (!token && pathname === "/dashboard") {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
 
-
-//See "Matching Paths below to learn more"
+  return NextResponse.next();
+}
 
 export const config = {
-    matcher:[
-        "/",
-        "/login",
-        "/signup",
-    ]
-}
+  matcher: ["/login", "/dashboard"], // Apply middleware only to these paths
+};
