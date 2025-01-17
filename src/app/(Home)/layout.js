@@ -8,7 +8,7 @@ const Navbar = lazy(() => import("../components/Navbar/Navbar"));
 const Footer = lazy(() => import("../components/Footer/Footer"));
 
 export const metadata = {
-  title: "KBS Educational Consultancy",
+  title: "ABC Educational Consultancy",
   description: "",
 };
 
