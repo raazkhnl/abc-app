@@ -1,11 +1,12 @@
 import Sidebar from "@/app/components/Sidebar/Sidebar";
 import "../../globals.css";
 import { Inter } from "next/font/google";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "KBS Educational Consultancy - Dashboard",
+  title: "ABC Educational Consultancy - Dashboard",
   description: "",
 };
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={inter.className}>
+      <ToastContainer position="top-right" autoClose={2000} />
         <Sidebar />
         <div className="p-4 sm:ml-64">{children}</div>
 

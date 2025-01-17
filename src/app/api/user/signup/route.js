@@ -64,28 +64,26 @@ export async function POST(req) {
             }
 
             return NextResponse.json({
-                message: process.env.AUTO_CONFIRM_USERS === 'true' 
+                "message": process.env.AUTO_CONFIRM_USERS === 'true' 
                     ? "User created successfully" 
                     : "User created successfully. Please check your email for verification.",
-                success: true,
+                "status": "success",
             });
 
         } catch (cognitoError) {
             // Handle specific Cognito errors
             if (cognitoError.name === 'UsernameExistsException') {
                 return NextResponse.json(
-                    { error: "User already exists" },
-                    { status: 400 }
+                    { "message": "User already exists", "status": "error" },
                 );
             } else if (cognitoError.name === 'InvalidPasswordException') {
                 return NextResponse.json(
-                    { error: "Password does not meet requirements" },
-                    { status: 400 }
+                    { "message": "Password does not meet requirements", "status": "error" },
                 );
             } else if (cognitoError.name === 'InvalidParameterException') {
                 return NextResponse.json(
-                    { error: "Invalid parameters provided" },
-                    { status: 400 }
+                    { "message": "Invalid parameters provided", "status": "error" },
+
                 );
             }
             
