@@ -15,7 +15,7 @@ export async function POST(req) {
     const image1 = formData.get("image") || null;
 
     const uploadFolder = "Blogs"
-    const image =await getUrlFromFile(image1, uploadFolder)
+    const image = await getUrlFromFile(image1, uploadFolder)
 
     const newBlog = new Blog({
       title,
