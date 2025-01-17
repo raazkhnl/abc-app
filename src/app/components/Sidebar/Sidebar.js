@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import "../Navbar/Navbar.css";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import Image from "next/image";
 
 function Sidebar() {
   const [activeIndex, setActiveIndex] = useState("/dashboard/about");
@@ -193,7 +194,8 @@ function Sidebar() {
     if (activeItem) {
       setActiveIndex(activeItem.label);
     }
-  }, [pathname]);
+  }, [pathname, sidebarItems]);
+
 
   return (
     <>

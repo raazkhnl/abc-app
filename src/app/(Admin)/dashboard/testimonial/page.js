@@ -1,12 +1,12 @@
 import React from 'react'
 
-function page() {
+function Page() {
   return (
     <div>
       this is testimonial page
-      
+
     </div>
   )
 }
 
-export default page
+export default Page

@@ -1,65 +1,97 @@
 "use client";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import React from "react";
 
 function Slider() {
-  const [refresh, setRefresh] = React.useState("")
-  const {pathname} = usePathname()
+  const [refresh, setRefresh] = useState("");
+  const { pathname } = usePathname();
 
   const images = [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQmUoRyARahVZUGodS3sjHTgKW8QOAdw3AAkTZrtbr9w&s",
-    "https://www.w3.org/TR/2019/NOTE-wai-aria-practices-1.1-20190207/examples/carousel/carousel-1/images/lands-endslide__800x600.jpg",
-    "https://demos.creative-tim.com/material-kit/assets-old/img/bg2.jpg",
-    "https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIf-pZhsMJc0jCD0O9H2THIKi31pB86hmfgt3BjP19wev-tGX4BSJLfKzW0KohfleigCk&usqp=CAU",
+    "https://images.unsplash.com/photo-1730292421765-618a6f7aeed7?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1471879832106-c7ab9e0cee23?q=80&w=2873&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1457270508644-1e4905fabd7e?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1428908728789-d2de25dbd4e2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1709483076965-a89e22e9f3a5?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   ];
 
-  React.useEffect(() => {
-    setRefresh(pathname)
-  }, [pathname])
-  
+  useEffect(() => {
+    setRefresh(pathname);
+  }, [pathname]);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Automatically go to the next slide every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); // 3000ms = 3 seconds
+
+    return () => clearInterval(interval); // Clear the interval when the component is unmounted
+  }, []);
+
+  // Function to go to the next image
+  const nextSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  // Function to go to the previous image
+  const prevSlide = () => {
+    setActiveIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+  };
+
   return (
     <div
       id="indicators-carousel"
-      className="relative w-full"
-      data-carousel="slide"
-      style={{ height: "70vh" }}
+      className="relative w-full h-[40vh] md:h-[50vh]"
     >
       <div
-        className="relative overflow-hidden md:h-9"
-        style={{ height: "70vh" }}
+        className="relative overflow-hidden"
+        style={{ height: "100%", width: "100%" }}
       >
         {images.map((image, index) => (
           <div
             key={index}
-            className={`hidden duration-700 ease-in-out ${
-              index === 0 ? "active" : ""
-            }`}
-            data-carousel-item={index === 0 ? "active" : ""}
+            className={`duration-700 ease-in-out transition-opacity ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+            }}
           >
-            <img
+            <Image
               src={image}
-              className="absolute block w-full h-[90%] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
               alt={`Image ${index + 1}`}
+              className="w-full h-full object-cover"
+              width={1000} // Used for optimization with the next/image component
+              height={500} // Ensures a consistent aspect ratio
+              sizes="100vw" // Ensures the image uses the full viewport width
             />
           </div>
         ))}
       </div>
+
+      {/* Navigation buttons */}
       <div className="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
         <button
           type="button"
           className="w-3 h-3 rounded-full"
-          aria-current="false"
-          aria-label="Slide 3"
-          data-carousel-slide-to="2"
+          onClick={prevSlide}
+          aria-label="Previous Slide"
         ></button>
       </div>
-      <button
-        type="button"
-        className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        data-carousel-prev
-      >
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+
+      <div className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
+        <button
+          type="button"
+          onClick={prevSlide}
+          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60"
+        >
+          <span className="sr-only">Previous</span>
           <svg
             className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
             aria-hidden="true"
@@ -75,15 +107,16 @@ function Slider() {
               d="M5 1 1 5l4 4"
             />
           </svg>
-          <span className="sr-only">Previous</span>
-        </span>
-      </button>
-      <button
-        type="button"
-        className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        data-carousel-next
-      >
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+        </button>
+      </div>
+
+      <div className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
+        <button
+          type="button"
+          onClick={nextSlide}
+          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60"
+        >
+          <span className="sr-only">Next</span>
           <svg
             className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
             aria-hidden="true"
@@ -99,9 +132,8 @@ function Slider() {
               d="m1 9 4-4-4-4"
             />
           </svg>
-          <span className="sr-only">Next</span>
-        </span>
-      </button>
+        </button>
+      </div>
     </div>
   );
 }

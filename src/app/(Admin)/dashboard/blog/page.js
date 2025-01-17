@@ -2,7 +2,7 @@ import Loader from "@/app/utils/Loader";
 import React, { Suspense, lazy } from "react";
 const AdminBlog = lazy(() => import("@/app/components/Blog/AdminBlog"));
 
-function page() {
+function Page() {
   return (
     <Suspense
       fallback={
@@ -16,4 +16,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
