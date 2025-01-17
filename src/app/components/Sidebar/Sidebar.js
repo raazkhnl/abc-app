@@ -63,48 +63,6 @@ function Sidebar() {
       ),
       label: "CONTACT US",
     },
-    {
-      href: "/dashboard/documentation",
-      icon: (
-        <i className="fa-solid fa-book w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
-      ),
-      label: "DOCUMENTATION",
-    },
-    // {
-    //   href: "/dashboard/event",
-    //   icon: (
-    //     <i className="fa-solid fa-calendar-alt w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
-    //   ),
-    //   label: "EVENT",
-    // },
-    {
-      href: "/dashboard/inquiries",
-      icon: (
-        <i className="fa-solid fa-circle-question text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
-      ),
-      label: "INQUIRIES",
-    },
-    {
-      href: "/dashboard/study-abroad",
-      icon: (
-        <i className="fa-solid fa-globe w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
-      ),
-      label: "STUDY ABROAD",
-    },
-    {
-      href: "/dashboard/testimonial",
-      icon: (
-        <i className="fa-solid fa-quote-right w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
-      ),
-      label: "TESTIMONIAL",
-    },
-    {
-      href: "/dashboard/org-setting",
-      icon: (
-        <i className="fa-solid fa-gears text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
-      ),
-      label: "ORGANIZATION SETTING",
-    },
     // {
     //   href: "/dashboard/documentation",
     //   icon: (
@@ -112,13 +70,55 @@ function Sidebar() {
     //   ),
     //   label: "DOCUMENTATION",
     // },
-    {
-      href: "/dashboard/event",
-      icon: (
-        <i className="fa-solid fa-calendar-alt w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
-      ),
-      label: "EVENT",
-    },
+    // {
+    //   href: "/dashboard/event",
+    //   icon: (
+    //     <i className="fa-solid fa-calendar-alt w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+    //   ),
+    //   label: "EVENT",
+    // },
+    // {
+    //   href: "/dashboard/inquiries",
+    //   icon: (
+    //     <i className="fa-solid fa-circle-question text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+    //   ),
+    //   label: "INQUIRIES",
+    // },
+    // {
+    //   href: "/dashboard/study-abroad",
+    //   icon: (
+    //     <i className="fa-solid fa-globe w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+    //   ),
+    //   label: "STUDY ABROAD",
+    // },
+    // {
+    //   href: "/dashboard/testimonial",
+    //   icon: (
+    //     <i className="fa-solid fa-quote-right w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+    //   ),
+    //   label: "TESTIMONIAL",
+    // },
+    // {
+    //   href: "/dashboard/org-setting",
+    //   icon: (
+    //     <i className="fa-solid fa-gears text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+    //   ),
+    //   label: "ORGANIZATION SETTING",
+    // },
+    // {
+    //   href: "/dashboard/documentation",
+    //   icon: (
+    //     <i className="fa-solid fa-book w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+    //   ),
+    //   label: "DOCUMENTATION",
+    // },
+    // {
+    //   href: "/dashboard/event",
+    //   icon: (
+    //     <i className="fa-solid fa-calendar-alt w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+    //   ),
+    //   label: "EVENT",
+    // },
     // {
     //   href: "/dashboard/inquiries",
     //   icon: (
