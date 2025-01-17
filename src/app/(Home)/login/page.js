@@ -37,7 +37,7 @@ const page = () => {
         });
 
         toast.success("Login successful!");
-        router.push("/dashboard");
+        router.push("/dashboard/about");
       } else if (data.message === "User is not confirmed.") {
         // User is not confirmed, show verification code input
         setIsUserNotConfirmed(true);
