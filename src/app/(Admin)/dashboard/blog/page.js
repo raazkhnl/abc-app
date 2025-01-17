@@ -1,6 +1,6 @@
 import Loader from "@/app/utils/Loader";
 import React, { Suspense, lazy } from "react";
-const Blog = lazy(() => import("@/app/components/Blog/Blog"));
+const AdminBlog = lazy(() => import("@/app/components/Blog/AdminBlog"));
 
 function page() {
   return (
@@ -11,7 +11,7 @@ function page() {
         </div>
       }
     >
-      <Blog/>
+      <AdminBlog />
     </Suspense>
   );
 }
