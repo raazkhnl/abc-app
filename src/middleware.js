@@ -6,7 +6,11 @@ export function middleware(request) {
 
 
   if (token && pathname === "/login") {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+    return NextResponse.redirect(new URL("/dashboard/about", request.url));
+  }
+
+  if (token && pathname === "/dashboard") {
+    return NextResponse.redirect(new URL("/dashboard/about", request.url));
   }
 
   if (!token && pathname === "/dashboard") {
