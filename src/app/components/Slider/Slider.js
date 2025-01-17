@@ -1,7 +1,11 @@
 "use client";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 function Slider() {
+  const [refresh, setRefresh] = React.useState("")
+  const {pathname} = usePathname()
+
   const images = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQmUoRyARahVZUGodS3sjHTgKW8QOAdw3AAkTZrtbr9w&s",
     "https://www.w3.org/TR/2019/NOTE-wai-aria-practices-1.1-20190207/examples/carousel/carousel-1/images/lands-endslide__800x600.jpg",
@@ -9,6 +13,11 @@ function Slider() {
     "https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIf-pZhsMJc0jCD0O9H2THIKi31pB86hmfgt3BjP19wev-tGX4BSJLfKzW0KohfleigCk&usqp=CAU",
   ];
+
+  React.useEffect(() => {
+    setRefresh(pathname)
+  }, [pathname])
+  
   return (
     <div
       id="indicators-carousel"
