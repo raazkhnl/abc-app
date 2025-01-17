@@ -7,11 +7,11 @@ import { usePathname } from "next/navigation";
 function Navbar() {
   const [activeItem, setActiveItem] = useState("/");
   const pathname = usePathname()
-  
+
   const navItems = [
     { title: "HOME", href: "/" },
     { title: "ABOUT", href: "/about-us" },
-    { title: "EVENTS", href: "/events" },
+    // { title: "EVENTS", href: "/events" },
     { title: "CONTACT US", href: "/contact-us" },
   ];
 
@@ -102,9 +102,8 @@ function Navbar() {
                   {item.title === "HOME" ? (
                     <a
                       href={item.href}
-                      className={`block py-2 font-semibold -px-1 text-gray-900 hover:bg-gray-300 hover:rounded-md ${
-                        activeItem === pathname ? "active" : ""
-                      }`}
+                      className={`block py-2 font-semibold -px-1 text-gray-900 hover:bg-gray-300 hover:rounded-md ${activeItem === pathname ? "active" : ""
+                        }`}
                       onClick={() => handleItemClick(item.href)}
                     >
                       {item.title}
@@ -115,9 +114,8 @@ function Navbar() {
                   ) : (
                     <Link
                       href={item.href}
-                      className={`block py-2 font-semibold -px-1 text-gray-900 hover:bg-gray-300 hover:rounded-md ${
-                        activeItem === pathname ? "active" : ""
-                      }`}
+                      className={`block py-2 font-semibold -px-1 text-gray-900 hover:bg-gray-300 hover:rounded-md ${activeItem === pathname ? "active" : ""
+                        }`}
                       onClick={() => handleItemClick(item.href)}
                     >
                       {item.title}
