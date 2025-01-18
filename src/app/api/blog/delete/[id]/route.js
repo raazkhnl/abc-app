@@ -1,4 +1,4 @@
-// app/api/blog/[id]/route.js
+
 import { deleteFromS3 } from "@/helpers/awsS3DeleteHelper";
 import connectDB from "@/lib/connectDB";
 import Blog from "@/model/blog";
