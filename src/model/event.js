@@ -12,7 +12,7 @@ const EventSchema = new mongoose.Schema({
       },
     
       priorityOrder: {
-        type: number,
+        type: String,
         required: [true, "Please provide a priority order"],
       },
     

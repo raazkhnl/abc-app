@@ -3,6 +3,8 @@ import "../globals.css";
 import { Inter } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Script from 'next/script'
+
 const inter = Inter({ subsets: ["latin"] });
 const Navbar = lazy(() => import("../components/Navbar/Navbar"));
 const Footer = lazy(() => import("../components/Footer/Footer"));
@@ -26,7 +28,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></Script>
       </body>
     </html>
   );

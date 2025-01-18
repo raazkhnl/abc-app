@@ -14,12 +14,12 @@ const Blog = () => {
           </h1>
           <hr className="h-1 bg-yellow-400 mb-2"/>
           <p className="font-semibold text-lg text-gray-600">
-            "Welcome to "KBS Educational Consultancy," your go-to resource for navigating
-            the complex world of educational consultancy! Whether you're a
+            Welcome to ABC Educational Consultancy, your go-to resource for navigating
+            the complex world of educational consultancy! Whether you are a
             student dreaming of studying abroad, a parent seeking the best
             educational pathways for your child, or a professional looking to
             further your education, our blog is designed to provide you with
-            expert advice, insightful tips, and the latest trends in education."
+            expert advice, insightful tips, and the latest trends in education.
           </p>
         </div>
         <div className="mx-auto">

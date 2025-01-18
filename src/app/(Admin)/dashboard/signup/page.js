@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const page = () => {
+const Singup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullname, setFullName] = useState("");
@@ -27,9 +27,9 @@ const page = () => {
 
       if (data.status === "success") {
         toast.success(data.message);
-        setEmail("")
-        setFullName("")
-        setPassword("")
+        setEmail("");
+        setFullName("");
+        setPassword("");
       } else {
         toast.error(data.message);
       }
@@ -114,6 +114,10 @@ const page = () => {
       </div>
     </>
   );
+};
+
+const page = () => {
+  return <Singup />;
 };
 
 export default page;

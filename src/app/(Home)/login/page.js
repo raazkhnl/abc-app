@@ -6,12 +6,12 @@ import "react-toastify/dist/ReactToastify.css";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isUserNotConfirmed, setIsUserNotConfirmed] = useState(false); // new state
+  const [isUserNotConfirmed, setIsUserNotConfirmed] = useState(false);
   const router = useRouter();
 
   const handleLogin = async (e) => {
@@ -67,7 +67,7 @@ const page = () => {
       });
 
       const data = await response.json();
-      console.log(data)
+      console.log(data);
       if (response.ok && data.status === "success") {
         toast.success("Verification successful!");
         router.push("/login");
@@ -181,6 +181,10 @@ const page = () => {
       )}
     </div>
   );
+};
+
+const page = () => {
+  return <Login />;
 };
 
 export default page;
