@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/abc-app' : '',
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: "http",
