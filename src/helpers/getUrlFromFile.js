@@ -9,7 +9,7 @@ export const getUrlFromFile = async(file, upload) =>{
         }
         else{
             const buffer = Buffer.from(await file.arrayBuffer());
-            const relativeUploadDir = `/${upload}/${new Date(Date.now())
+            const relativeUploadDir = `/files/${upload}/${new Date(Date.now())
                 .toLocaleDateString("id-ID", {
                     day: "2-digit",
                     month: "2-digit",

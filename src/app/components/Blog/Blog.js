@@ -2,18 +2,30 @@ import Image from "next/image";
 import React from "react";
 
 const Blog = () => {
-
   const [blogs, setBlogs] = React.useState([]);
   const [fetchLoading, setFetchLoading] = React.useState(true);
+
   // Fetch blogs from the API
   const fetchBlogs = async () => {
     setFetchLoading(true);
     try {
-      const response = await fetch("/api/blog/read");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/blog/read`,
+        {
+          method: "GET",
+          headers: {
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
       setBlogs(data.result || []);
     } catch (error) {
-      console.error("Error fetching blogs:", error);
     } finally {
       setFetchLoading(false);
     }
@@ -33,14 +45,16 @@ const Blog = () => {
           <div className="text-center">Loading blogs...</div>
         ) : blogs.length > 0 ? (
           blogs.map((blog) => (
-            <div key={blog._id} className="w-[80%] mx-auto flex flex-col-reverse md:flex md:flex-row-reverse mt-7 mb-7">
+            <div
+              key={blog._id}
+              className="w-[80%] mx-auto flex flex-col-reverse md:flex md:flex-row-reverse mt-7 mb-7"
+            >
               <div className="w-[80%] mx-auto mt-4 md:mt-3 mb-2">
-                <h1 className="font-extrabold mb-2 text-3xl">
-                  {blog.title}          </h1>
+                <h1 className="font-extrabold mb-2 text-3xl">{blog.title} </h1>
                 <hr className="h-1 bg-yellow-400 mb-2" />
                 <p className="font-semibold text-lg text-gray-600">
-                  {blog.description} </p>
-
+                  {blog.description}{" "}
+                </p>
               </div>
               <div className="mx-auto">
                 <img
@@ -58,4 +72,4 @@ const Blog = () => {
     </>
   );
 };
-export default Blog
+export default Blog;

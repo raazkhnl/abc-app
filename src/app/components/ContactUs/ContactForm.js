@@ -26,7 +26,7 @@ const ContactForm = () => {
 
     try {
       const response = await fetch(
-        `/api/contactus/create`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/contactus/create`,
         {
           method: "POST",
           body: new URLSearchParams(formData),

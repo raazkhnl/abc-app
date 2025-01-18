@@ -29,9 +29,7 @@ export default function RootLayout({ children }) {
         <Footer />
 
         {/* Use next/script for asynchronous script loading */}
-        <Script
-          src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"
-        />
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js" />
       </body>
     </html>
   );
