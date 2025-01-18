@@ -2,6 +2,7 @@ import connectDB from "@/lib/connectDB";
 import { NextResponse } from "next/server";
 import { getUrlFromFile } from "@/helpers/getUrlFromFile";
 import Blog from "@/model/blog";
+import { uploadToS3 } from "@/helpers/awsS3UploadHelper";
 
 connectDB();
 
@@ -15,8 +16,10 @@ export async function POST(req) {
     const image1 = formData.get("image") || null;
 
     const uploadFolder = "Blogs"
-    const image = await getUrlFromFile(image1, uploadFolder)
-
+    let image = null;
+    if (image1) {
+      image = await uploadToS3(image1, uploadFolder);
+    }
     const newBlog = new Blog({
       title,
       category,

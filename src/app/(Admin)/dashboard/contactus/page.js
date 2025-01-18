@@ -11,7 +11,16 @@ function Page() {
   const fetchContacts = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/contactus/read"); // Replace with your API endpoint
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/contactus/read`,
+        {
+          method: "GET",
+          headers: {
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        }
+      ); 
       const data = await response.json();
       if (response.ok) {
         setContacts(data.result || []);
@@ -33,7 +42,7 @@ function Page() {
   const handleDelete = async (id) => {
     setDeletingId(id);
     try {
-      const response = await fetch(`/api/contactus/delete/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/contactus/delete/${id}`, {
         method: "DELETE",
       });
       const data = await response.json();

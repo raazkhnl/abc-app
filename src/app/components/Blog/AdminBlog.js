@@ -23,11 +23,23 @@ const AdminBlog = () => {
   const fetchBlogs = async () => {
     setFetchLoading(true);
     try {
-      const response = await fetch("/api/blog/read");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/blog/read`,
+        {
+          method: "GET",
+          headers: {
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
       setBlogs(data.result || []);
     } catch (error) {
-      console.error("Error fetching blogs:", error);
     } finally {
       setFetchLoading(false);
     }
@@ -71,7 +83,9 @@ const AdminBlog = () => {
         form.append("image", formData.image);
       }
 
-      const endpoint = isEditMode ? `/api/blog/update/${editBlogId}` : "/api/blog/create";
+      const endpoint = isEditMode
+        ? `${process.env.NEXT_PUBLIC_BASE_URL}/api/blog/update/${editBlogId}`
+        : `${process.env.NEXT_PUBLIC_BASE_URL}/api/blog/create`;
       const method = isEditMode ? "PUT" : "POST";
 
       const response = await fetch(endpoint, {
@@ -81,7 +95,11 @@ const AdminBlog = () => {
 
       const result = await response.json();
       if (response.ok) {
-        setMessage(isEditMode ? "Blog updated successfully!" : "Blog created successfully!");
+        setMessage(
+          isEditMode
+            ? "Blog updated successfully!"
+            : "Blog created successfully!"
+        );
         setFormData({
           title: "",
           category: "",
@@ -118,9 +136,12 @@ const AdminBlog = () => {
 
   const handleDelete = async (blogId) => {
     try {
-      const response = await fetch(`/api/blog/delete/${blogId}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/blog/delete/${blogId}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       const result = await response.json();
       if (response.ok) {
@@ -166,7 +187,9 @@ const AdminBlog = () => {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white rounded-lg shadow-lg w-[90%] md:w-1/2">
             <div className="flex justify-between items-center p-4 border-b">
-              <h3 className="text-xl font-medium">{isEditMode ? "Edit Blog" : "Create Blog"}</h3>
+              <h3 className="text-xl font-medium">
+                {isEditMode ? "Edit Blog" : "Create Blog"}
+              </h3>
               <button
                 className="text-gray-400 hover:bg-gray-200 rounded-lg p-2"
                 onClick={toggleModal}
@@ -177,7 +200,10 @@ const AdminBlog = () => {
             <div className="p-4">
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
-                  <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="title"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Blog Title
                   </label>
                   <input
@@ -192,7 +218,10 @@ const AdminBlog = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="category" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="category"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Category
                   </label>
                   <input
@@ -207,7 +236,10 @@ const AdminBlog = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="priorityOrder" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="priorityOrder"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Priority Order
                   </label>
                   <input
@@ -222,7 +254,10 @@ const AdminBlog = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="description"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Description
                   </label>
                   <textarea
@@ -237,7 +272,10 @@ const AdminBlog = () => {
                   ></textarea>
                 </div>
                 <div>
-                  <label htmlFor="image" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="image"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Upload Image
                   </label>
                   <input
@@ -254,7 +292,11 @@ const AdminBlog = () => {
                   className="w-full text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-4 py-2"
                   disabled={isLoading}
                 >
-                  {isLoading ? "Submitting..." : isEditMode ? "Update" : "Submit"}
+                  {isLoading
+                    ? "Submitting..."
+                    : isEditMode
+                    ? "Update"
+                    : "Submit"}
                 </button>
               </form>
             </div>
@@ -268,13 +310,16 @@ const AdminBlog = () => {
           <div className="text-center">Loading blogs...</div>
         ) : blogs.length > 0 ? (
           blogs.map((blog) => (
-            <div key={blog._id} className="w-[80%] mx-auto flex flex-col-reverse md:flex md:flex-row-reverse mt-7 mb-7">
+            <div
+              key={blog._id}
+              className="w-[80%] mx-auto flex flex-col-reverse md:flex md:flex-row-reverse mt-7 mb-7"
+            >
               <div className="mx-auto mt-4 md:mt-3 mb-2">
-                <h1 className="font-extrabold mb-2 text-3xl">
-                  {blog.title}          </h1>
+                <h1 className="font-extrabold mb-2 text-3xl">{blog.title} </h1>
                 <hr className="h-1 bg-yellow-400 mb-2" />
                 <p className="font-semibold text-lg text-gray-600">
-                  {blog.description} </p>
+                  {blog.description}{" "}
+                </p>
                 <div className="space-x-2">
                   <button
                     className="text-blue-500 hover:underline"
@@ -291,11 +336,16 @@ const AdminBlog = () => {
                 </div>
               </div>
               <div className="mx-auto md:p-2">
-                <img
-                  src={blog.image}
-                  className="mx-auto w-[100rem] h-[200px] rounded-xl"
-                  alt={blog.altText || "Blog image"}
-                />
+                {blog.image && (
+                  <Image
+                   className="rounded-xl mx-auto"
+                    src={blog.image}
+                    alt={blog.altText ||  "Blog image"}
+                    width={500} 
+                    height={300}
+                    priority={true}
+                  />
+                )}
               </div>
             </div>
           ))
