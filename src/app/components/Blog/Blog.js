@@ -59,7 +59,7 @@ const Blog = () => {
               <div className="mx-auto">
                 <img
                   src={blog.image}
-                  className="mx-auto w-[80%] h-full rounded-xl"
+                  className="mx-auto w-[80%] h-full max-h-[300px] rounded-xl"
                   alt={blog.altText || "Blog image"}
                 />
               </div>

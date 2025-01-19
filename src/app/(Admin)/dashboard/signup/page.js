@@ -44,12 +44,12 @@ const Page = () => {
   return (
     <>
       <div className="relative flex flex-col items-center w-full mt-2">
-        <h1 className="font-bold text-3xl mb-7">Sign Up</h1>
-        <div className="absolute bottom-3 h-1 w-[40%] md:w-[10%] bg-yellow-300"></div>
+        <h1 className="font-bold text-3xl mb-7">Admin Invite</h1>
+        <div className="absolute bottom-3 h-1 w-[50%] md:w-[10%] bg-yellow-300"></div>
       </div>
 
       <div className="flex flex-col items-center justify-center h-[70vh]">
-        <form onSubmit={handleSignUp} className="w-[20%]">
+        <form onSubmit={handleSignUp} className="md:w-[50%] w-[80%]">
           <div className="mb-5">
             <label
               htmlFor="fullname"
@@ -79,7 +79,7 @@ const Page = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-              placeholder="name@abc.com"
+              placeholder="email@abc.com"
               required
             />
           </div>

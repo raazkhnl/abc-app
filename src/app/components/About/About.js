@@ -19,7 +19,7 @@ const About = () => {
         <div className="w-[80%] mx-auto mt-4 md:mt-3 mb-2">
           <h1 className="font-extrabold mb-2 text-3xl text-center">Background</h1>
           <p className="font-semibold text-lg text-gray-600">
-            &quot;Empowering Futures, Illuminating Paths: Welcome to KBS Educational
+            &quot;Empowering Futures, Illuminating Paths: Welcome to ABC Educational
             Consultancy, where education meets innovation and dreams take
             flight. With a steadfast commitment to guiding students towards
             their brightest academic horizons, we craft personalized journeys
