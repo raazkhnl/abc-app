@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import { 
-    SecretsManagerClient, 
-    GetSecretValueCommand 
+import {
+    SecretsManagerClient,
+    GetSecretValueCommand
 } from "@aws-sdk/client-secrets-manager";
 
 const secretsManager = new SecretsManagerClient({
@@ -15,11 +15,11 @@ const secretsManager = new SecretsManagerClient({
 export async function getDbUri() {
     try {
         const command = new GetSecretValueCommand({
-            SecretId: process.env.SECRET_NAME, 
+            SecretId: process.env.SECRET_NAME,
         });
 
         const response = await secretsManager.send(command);
-        
+
         if (response.SecretString) {
             try {
                 const secret = JSON.parse(response.SecretString);
@@ -28,7 +28,7 @@ export async function getDbUri() {
                 return response.SecretString;
             }
         }
-        
+
         throw new Error('No secret string found');
 
     } catch (error) {
@@ -37,13 +37,13 @@ export async function getDbUri() {
     }
 }
 
-export default async function (){
-
-    try{
+// Name the function you are exporting as default
+export default async function connectToDatabase() {
+    try {
         const uri = await getDbUri();
-        await mongoose.connect(`${uri}`)
-        console.log("connected Successfully....");
-    } catch(error){
-        console.log(error);
+        await mongoose.connect(`${uri}`);
+        console.log("Connected Successfully...");
+    } catch (error) {
+        console.error("Error connecting to the database:", error);
     }
 }

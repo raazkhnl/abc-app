@@ -184,10 +184,11 @@ const AdminBlog = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white rounded-lg shadow-lg w-[90%] md:w-1/2">
+        <div className="fixed inset-0 w-[95%] flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white rounded-lg shadow-lg w-[95%] sm:w-[85%] md:w-[60%] lg:w-[40%] max-h-[90vh] overflow-auto">
+            {/* Modal Header */}
             <div className="flex justify-between items-center p-4 border-b">
-              <h3 className="text-xl font-medium">
+              <h3 className="text-lg md:text-xl font-medium">
                 {isEditMode ? "Edit Blog" : "Create Blog"}
               </h3>
               <button
@@ -197,7 +198,9 @@ const AdminBlog = () => {
                 ✕
               </button>
             </div>
-            <div className="p-4">
+
+            {/* Modal Content */}
+            <div className="p-4 sm:p-6">
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
                   <label
@@ -295,8 +298,8 @@ const AdminBlog = () => {
                   {isLoading
                     ? "Submitting..."
                     : isEditMode
-                    ? "Update"
-                    : "Submit"}
+                      ? "Update"
+                      : "Submit"}
                 </button>
               </form>
             </div>
@@ -314,7 +317,7 @@ const AdminBlog = () => {
               key={blog._id}
               className="w-[80%] mx-auto flex flex-col-reverse md:flex md:flex-row-reverse mt-7 mb-7"
             >
-              <div className="mx-auto mt-4 md:mt-3 mb-2">
+              <div className="mx-auto mt-4 md:mt-3 mb-2 md:w-[90%]">
                 <h1 className="font-extrabold mb-2 text-3xl">{blog.title} </h1>
                 <hr className="h-1 bg-yellow-400 mb-2" />
                 <p className="font-semibold text-lg text-gray-600">
@@ -335,16 +338,17 @@ const AdminBlog = () => {
                   </button>
                 </div>
               </div>
-              <div className="mx-auto md:p-2">
+              <div className="mx-auto md:p-2 max-h-[50%] ">
                 {blog.image && (
-                  <Image
-                   className="rounded-xl mx-auto"
-                    src={blog.image}
-                    alt={blog.altText ||  "Blog image"}
-                    width={500} 
-                    height={300}
-                    priority={true}
-                  />
+                  <div className="relative w-full max-w-[800px] mx-auto aspect-w-4 aspect-h-5 rounded-xl overflow-hidden">
+                    <Image
+                      src={blog.image}
+                      alt={blog.altText || "Blog image"}
+                      fill
+                      className="object-cover"
+                      priority={true}
+                    />
+                  </div>
                 )}
               </div>
             </div>
