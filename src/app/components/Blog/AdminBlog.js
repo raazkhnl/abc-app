@@ -298,8 +298,8 @@ const AdminBlog = () => {
                   {isLoading
                     ? "Submitting..."
                     : isEditMode
-                      ? "Update"
-                      : "Submit"}
+                    ? "Update"
+                    : "Submit"}
                 </button>
               </form>
             </div>
@@ -339,17 +339,20 @@ const AdminBlog = () => {
                 </div>
               </div>
               <div className="mx-auto md:p-2 max-h-[50%] ">
-                {blog.image && (
-                  <div className="relative w-full max-w-[800px] mx-auto aspect-w-4 aspect-h-5 rounded-xl overflow-hidden">
-                    <Image
+                <div className="relative w-full max-w-[800px] mx-auto aspect-w-4 aspect-h-5 rounded-xl overflow-hidden">
+                  {/* <Image
                       src={blog.image}
                       alt={blog.altText || "Blog image"}
                       fill
                       className="object-cover"
                       priority={true}
-                    />
-                  </div>
-                )}
+                    /> */}
+                  <img
+                    src={blog.image}
+                    className="mx-auto w-[80%] h-full max-h-[300px] rounded-xl"
+                    alt={blog.altText || "Blog image"}
+                  />
+                </div>
               </div>
             </div>
           ))

@@ -1,7 +1,8 @@
-import { getUrlFromFile } from "@/helpers/getUrlFromFile";
 import connectDB from "@/lib/connectDB";
 import Blog from "@/model/blog";
 import { NextResponse } from "next/server";
+import { uploadToS3 } from "@/helpers/awsS3UploadHelper";
+import { deleteFromS3 } from "@/helpers/awsS3DeleteHelper";
 
 connectDB();
 
@@ -14,9 +15,24 @@ export async function PUT(req, { params }) {
   const description = formData.get("description");
   const image1 = formData.get("image") || null;
 
-  const uploadFolder = "testimonials"
-  const image =await getUrlFromFile(image1, uploadFolder)
-
+  const uploadFolder = "Blogs";
+  let image = null;
+  if (image1) {
+    image = await uploadToS3(image1, uploadFolder);
+  }
+  let blogDetail = await Blog.findById(params.id);
+  //Find the detail to be updated and update it
+  if (!blogDetail) {
+    return NextResponse.json(
+      {
+        message: "Detail Not found",
+      },
+      {
+        status: 400,
+      }
+    );
+  }
+  
   try {
     const newBlog = {};
     if (title) {
@@ -32,25 +48,23 @@ export async function PUT(req, { params }) {
       newBlog.description = description;
     }
     if (image) {
+      if (blogDetail.image) {
+        try {
+          await deleteFromS3(blogDetail.image);
+        } catch (s3Error) {
+          console.error("Error deleting image from S3:", s3Error);
+        }
+      }
       newBlog.image = image;
     }
-  
-    //Find the detail to be updated and update it
-    let blogDetail = await Blog.findById(params.id);
-    if (!blogDetail) {
-      return NextResponse.json(
-        {
-          message: "Detail Not found",
-        },
-        {
-          status: 400,
-        }
-      );
-    }
 
-    const updatedBlog = await Blog.findByIdAndUpdate(id, {
-        $set:newBlog
-    },{new:true});
+    const updatedBlog = await Blog.findByIdAndUpdate(
+      id,
+      {
+        $set: newBlog,
+      },
+      { new: true }
+    );
 
     return NextResponse.json(
       {

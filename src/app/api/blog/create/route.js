@@ -1,6 +1,5 @@
 import connectDB from "@/lib/connectDB";
 import { NextResponse } from "next/server";
-import { getUrlFromFile } from "@/helpers/getUrlFromFile";
 import Blog from "@/model/blog";
 import { uploadToS3 } from "@/helpers/awsS3UploadHelper";
 
