@@ -12,6 +12,7 @@ const Testimonial = () => {
       review:
         "This service has completely transformed my career prospects. Highly recommend!",
       rating: 4,
+      imageUrl: "https://www.southernliving.com/thmb/4cqMCX1NKLPmOI_WYlFn1v5g7xg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/fluffy-coconut-frosting-sl-5af6656473584448a59b60dc8a86e084.jpg"
     },
     {
       name: "Jane Smith",
@@ -19,6 +20,7 @@ const Testimonial = () => {
       review:
         "An excellent experience from start to finish. The team is very supportive.",
       rating: 3.5,
+      imageUrl: "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chocolate-fudge-cake-91de17a.jpg",
     },
     {
       name: "Sam Wilson",
@@ -26,6 +28,8 @@ const Testimonial = () => {
       review:
         "Great service with amazing support. I found the perfect program for me.",
       rating: 4.5,
+      imageUrl: "https://www.africanbites.com/wp-content/uploads/2022/03/IMG_7670-scaled.jpg"
+
     },
     {
       name: "Anna Johnson",
@@ -33,6 +37,7 @@ const Testimonial = () => {
       review:
         "I couldn't be happier with my decision to use this service. Highly professional!",
       rating: 5,
+      imageUrl: "https://images-gmi-pmc.edge-generalmills.com/d580fee0-762d-4245-9499-c4ae2e269e62.jpg"
     },
     {
       name: "Michael Brown",
@@ -47,6 +52,7 @@ const Testimonial = () => {
       review:
         "Fantastic experience! I received excellent guidance and support throughout.",
       rating: 3,
+
     },
   ];
 
@@ -88,6 +94,7 @@ const Testimonial = () => {
                   subtitle={testimonial.subtitle}
                   review={testimonial.review}
                   rating={testimonial.rating}
+                  imageUrl={testimonial.imageUrl}
                 />
               </SplideSlide>
             ))}

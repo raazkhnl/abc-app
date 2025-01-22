@@ -21,9 +21,9 @@ const TestimonialCard = (props) => {
       <div className="max-w-xs w-[85%] bg-white border border-gray-200 rounded-lg shadow mb-3 mx-3">
         <a href="#">
           <div className="flex flex-row items-center justify-center p-4">
-            <div className="relative w-30 h-30 overflow-hidden bg-yellow-300 rounded-full">
+            <div className="relative w-30 h-30 overflow-hidden bg-yellow-300 rounded-md">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShB7IwN9gr4q2Tn-1CRfbgANRN-8SWlYMMy9iq467T1A&s"
+                src={props.imageUrl}
                 className="object-cover w-full h-full"
                 alt={props.name}
               />

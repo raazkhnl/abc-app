@@ -64,27 +64,27 @@ function Sidebar() {
       ),
       label: "CONTACT US",
     },
-    // {
-    //   href: "/dashboard/documentation",
-    //   icon: (
-    //     <i className="fa-solid fa-book w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
-    //   ),
-    //   label: "DOCUMENTATION",
-    // },
-    // {
-    //   href: "/dashboard/event",
-    //   icon: (
-    //     <i className="fa-solid fa-calendar-alt w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
-    //   ),
-    //   label: "EVENT",
-    // },
-    // {
-    //   href: "/dashboard/inquiries",
-    //   icon: (
-    //     <i className="fa-solid fa-circle-question text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
-    //   ),
-    //   label: "INQUIRIES",
-    // },
+    {
+      href: "/dashboard/documentation",
+      icon: (
+        <i className="fa-solid fa-book w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+      ),
+      label: "DOCUMENTATION",
+    },
+    {
+      href: "/dashboard/event",
+      icon: (
+        <i className="fa-solid fa-calendar-alt w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+      ),
+      label: "EVENT",
+    },
+    {
+      href: "/dashboard/inquiries",
+      icon: (
+        <i className="fa-solid fa-circle-question text-gray-500 transition duration-75 group-hover:text-gray-900"></i>
+      ),
+      label: "INQUIRIES",
+    },
     // {
     //   href: "/dashboard/study-abroad",
     //   icon: (

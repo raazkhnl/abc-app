@@ -13,6 +13,9 @@ const secretsManager = new SecretsManagerClient({
 });
 
 export async function getDbUri() {
+    if (process.env.MONGO_URI) {
+        return process.env.MONGO_URI;
+    }
     try {
         const command = new GetSecretValueCommand({
             SecretId: process.env.SECRET_NAME,
